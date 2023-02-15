@@ -13,7 +13,11 @@ export class LicenseService {
     ) {}
 
     async getLicense(): Promise<License[]> {
-        return await this.repositoryLicense.find();
+        return await this.repositoryLicense.find({
+            where: {
+                active_status: true
+            }
+        });
     }
 
     async getLicenseById(_id: number): Promise<License> {
