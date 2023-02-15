@@ -8,6 +8,7 @@ import { LicenseModule } from './license/license.module';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 import { ApolloDriver } from '@nestjs/apollo';
 import { ApolloDriverConfig } from '@nestjs/apollo/dist/interfaces';
+import { License } from './license/license.entity';
 
 @Module({
   imports: [
@@ -15,19 +16,19 @@ import { ApolloDriverConfig } from '@nestjs/apollo/dist/interfaces';
     
     TypeOrmModule.forRoot({
       type: 'sqlite',
-      database: ':memory:' ,
-      entities: ['dist/**/*.entity{.ts,.js}'],
+      database: 'db.sqlite',
+      entities: [License],
       synchronize: true,
     }),
+
 
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: true,
-      plugins: [ApolloServerPluginLandingPageLocalDefault()],
-      typePaths: ['./**/*.graphql'],
+      debug: true,
+      playground: true
     }),
-    
-    LicenseModule,
+    LicenseModule
   ],
   controllers: [AppController],
   providers: [AppService],
