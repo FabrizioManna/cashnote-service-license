@@ -30,7 +30,7 @@ export class License {
 
     @Column()
     @Field()
-    expired_license_date: string;
+    expired_license_date: Date;
 
     @Column()
     @Field()

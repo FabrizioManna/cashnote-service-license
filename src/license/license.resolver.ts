@@ -4,6 +4,7 @@ import { LicenseService } from './license.service';
 import { LicenseInput } from './dto/license.input';
 import { LicenseDeleteInput } from './dto/delete-license.input';
 import { NotFoundException } from '@nestjs/common'; 
+import { LicenseSearchInput } from './dto/license-find.input';
 @Resolver((of) => License)
 export class LicenseResolver {
     constructor(private licenseService: LicenseService) {}
@@ -16,6 +17,11 @@ export class LicenseResolver {
     @Mutation((returns) => License) 
     createLicense(@Args('licenseInput') licenseInput: LicenseInput): Promise<License> {
         return this.licenseService.createLicense(licenseInput);
+    }
+
+    @Query(returns => [License])
+    async findLicense(@Args('licenseSearchInput') licenseSearchInput: LicenseSearchInput): Promise<License[]> {
+        return await this.licenseService.findLicenseByFilters(licenseSearchInput);
     }
 
     @Mutation((returns) => Boolean)

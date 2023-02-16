@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { licenseStatusEnum } from './license-status.enum';
 
 @InputType()
 export class LicenseInput {
@@ -13,13 +14,13 @@ export class LicenseInput {
     user_actived_num: number;
 
     @Field()
-    license_buy_date: string;
+    license_buy_date: Date;
 
     @Field()
-    license_status: string;
+    license_status: licenseStatusEnum;
 
     @Field()
-    expired_license_date: string;
+    expired_license_date: Date;
 
     @Field()
     price_license: number;

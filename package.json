@@ -4,9 +4,11 @@
   "description": "",
   "author": "Fabrizio Manna",
   "private": true,
-  "license": "UNLICENSED",
+  "license": " Apache License",
   "scripts": {
     "build": "nest build",
+    "doc": "npx @compodoc/compodoc -p tsconfig.json -s",
+    "doc:watch": "npx @compodoc/compodoc -p tsconfig.json -s -w",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -35,6 +37,7 @@
     "typeorm": "^0.3.12"
   },
   "devDependencies": {
+    "@compodoc/compodoc": "^1.1.19",
     "@nestjs/cli": "^9.0.0",
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",
