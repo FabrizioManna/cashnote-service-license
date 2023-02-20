@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
@@ -13,7 +12,7 @@ import { License } from './license/license.entity';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    
+
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'db.sqlite',
@@ -21,16 +20,15 @@ import { License } from './license/license.entity';
       synchronize: true,
     }),
 
-
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: true,
       debug: true,
-      playground: true
+      playground: true,
     }),
-    LicenseModule
+    LicenseModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [],
 })
 export class AppModule {}
