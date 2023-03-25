@@ -3,6 +3,7 @@ import { licenseStatusEnum } from './license-status.enum';
 
 @InputType()
 export class LicenseInput {
+
   @Field()
   management_name: string;
 

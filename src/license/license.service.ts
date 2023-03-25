@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { LicenseInput } from './dto/license.input';
 import { FindOneOptions, Like, FindManyOptions } from 'typeorm';
 import { LicenseSearchInput } from './dto/license-find.input';
+import { LicenseDataUpdate } from './dto/license-update.input';
 @Injectable()
 /**
  * Class for comunication with db
@@ -25,6 +26,7 @@ export class LicenseService {
    * return all license not deleted with status true
    *
    * @returns License[]
+   * 
    */
   async getLicense(): Promise<License[]> {
     return await this.repositoryLicense.find({
@@ -43,9 +45,7 @@ export class LicenseService {
    * @return License[]
    *
    */
-  async findLicenseByFilters(
-    licenseSearchInput: LicenseSearchInput,
-  ): Promise<License[]> {
+  async findLicenseByFilters(licenseSearchInput: LicenseSearchInput): Promise<License[]> {
     const option: FindManyOptions<License> = {
       where: {},
     };
@@ -134,6 +134,7 @@ export class LicenseService {
    *
    * @param _id
    * @returns License
+   * 
    */
   async getLicenseById(_id: number): Promise<License> {
     const options: FindOneOptions<License> = { where: { _id } };
@@ -142,15 +143,29 @@ export class LicenseService {
 
   /**
    * Function createLicense
-   * isert a liense in db
+   * insert a license in db
    *
    * @param LicenseInput
-   * @returns
+   * @returns License
+   * 
    */
   async createLicense(LicenseInput: LicenseInput): Promise<License> {
     const newLicense = this.repositoryLicense.create(LicenseInput);
-    return this.repositoryLicense.save(newLicense);
+    return await this.repositoryLicense.save(newLicense);
   }
+
+  /**
+   * Function updateLicense
+   * update a license with specific id in db
+   * 
+   * @param _id
+   * @retuns License
+   * 
+   */
+  async updateLicense(_id: number, updateLicenseData: LicenseDataUpdate): Promise<License> {
+    await this.repositoryLicense.update(_id, updateLicenseData);
+    return this.repositoryLicense.findOne({ where: { _id } });
+  } 
 
   /**
    * Function deleteLicense
