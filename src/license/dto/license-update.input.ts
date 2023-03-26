@@ -1,8 +1,9 @@
 import { Field, InputType } from '@nestjs/graphql';
 import { licenseStatusEnum } from './license-status.enum';
+import { License } from '../license.entity';
 
 @InputType()
-export class LicenseSearchInput {
+export class LicenseDataUpdate {
   @Field({ nullable: true })
   management_name?: string;
 

@@ -4,43 +4,42 @@ import { licenseStatusEnum } from './license-status.enum';
 @InputType()
 export class LicenseInput {
 
-    @Field()
-    management_name: string;
-    
-    @Field()
-    management_version: string;
+  @Field()
+  management_name: string;
 
-    @Field()
-    user_actived_num: number;
+  @Field()
+  management_version: string;
 
-    @Field()
-    license_buy_date: Date;
+  @Field()
+  user_actived_num: number;
 
-    @Field()
-    license_status: licenseStatusEnum;
+  @Field()
+  license_buy_date: Date;
 
-    @Field()
-    expired_license_date: Date;
+  @Field()
+  license_status: licenseStatusEnum;
 
-    @Field()
-    price_license: number;
+  @Field()
+  expired_license_date: Date;
 
-    @Field()
-    price_total: number;
+  @Field()
+  price_license: number;
 
-    @Field()
-    type_license: string;
+  @Field()
+  price_total: number;
 
-    @Field()
-    limit_license: number;
+  @Field()
+  type_license: string;
 
-    @Field()
-    mod_supp_license: string;
+  @Field()
+  limit_license: number;
 
-    @Field()
-    user_id: number;
+  @Field()
+  mod_supp_license: string;
 
-    @Field()
-    payment_method: number;
-    
+  @Field()
+  user_id: number;
+
+  @Field()
+  payment_method: number;
 }
