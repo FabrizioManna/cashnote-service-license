@@ -23,7 +23,7 @@ import { License } from './license/license.entity';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: true,
-      playground: true,
+      playground: process.env.GRAPHQL_PLAY === 'true' ? true : false || true,
     }),
     LicenseModule,
   ],
