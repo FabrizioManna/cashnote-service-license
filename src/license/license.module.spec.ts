@@ -43,7 +43,6 @@ describe('Test (e2e) License Module', () => {
                 GraphQLModule.forRoot<ApolloDriverConfig>({
                     driver: ApolloDriver,
                     autoSchemaFile: true,
-                    debug: true,
                     playground: false,
                 }),
                 LicenseModule,
