@@ -1,5 +1,5 @@
 # Welcome to the GraphQL API for managing software licenses!
-
+![Last Commit](https://img.shields.io/github/last-commit/FabrizioManna/cashnote-service-license) ![Last Release](https://img.shields.io/github/release-date/FabrizioManna/cashnote-service-license) ![LICENSE](https://img.shields.io/github/license/FabrizioManna/cashnote-service-license)
 Our API provides a flexible and powerful way to manage software licenses, ensuring compliance and facilitating the distribution of licenses to end-users.
 
 Using GraphQL as our query language, our API allows developers to retrieve license information, generate new licenses, and manage license renewals and expirations.
