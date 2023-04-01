@@ -71,8 +71,4 @@ export class License {
   @Column({ default: () => 'CURRENT_TIMESTAMP' })
   @Field()
   modifiedAt: Date;
-
-  @Column({ nullable: true, default: null })
-  @Field()
-  deleteAt: Date;
 }

@@ -177,7 +177,6 @@ export class LicenseService {
   async deleteLicense(_id: number): Promise<boolean> {
     const result = await this.repositoryLicense.update(_id, {
       active_status: false,
-      deleteAt: new Date().getTime(),
     });
 
     return result.affected > 0;
