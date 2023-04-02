@@ -64,11 +64,11 @@ export class License {
   @Field()
   active_status: boolean;
 
-  @Column({ default: () => 'CURRENT_TIMESTAMP' })
+  @Column({ type: 'integer' })
   @Field()
   createdAt: Date;
 
-  @Column({ default: () => 'CURRENT_TIMESTAMP' })
+  @Column({ type: 'integer' })
   @Field()
   modifiedAt: Date;
 }

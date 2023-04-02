@@ -1,5 +1,5 @@
 import { Args, Resolver, Query, Mutation } from '@nestjs/graphql';
-import { License } from './license.entity';
+import { License } from './entity/license.entity';
 import { LicenseService } from './license.service';
 import { LicenseInput } from './dto/license.input';
 import { LicenseDeleteInput } from './dto/delete-license.input';

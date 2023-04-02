@@ -1,6 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
 import { licenseStatusEnum } from './license-status.enum';
-import { License } from '../license.entity';
+import { License } from '../entity/license.entity';
 
 @InputType()
 export class LicenseDataUpdate {
@@ -42,4 +42,10 @@ export class LicenseDataUpdate {
 
   @Field({ nullable: true })
   payment_method?: number;
+   
+  @Field({ nullable: true })
+  createdAt?: Date;
+  
+  @Field({ nullable: true })
+  modifiedAt?: Date;
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { License } from './license.entity';
+import { License } from './entity/license.entity';
 import { Repository } from 'typeorm';
 import { LicenseInput } from './dto/license.input';
 import { FindOneOptions, Like, FindManyOptions } from 'typeorm';
@@ -150,7 +150,9 @@ export class LicenseService {
    * 
    */
   async createLicense(LicenseInput: LicenseInput): Promise<License> {
-    const newLicense = this.repositoryLicense.create(LicenseInput);
+    let newLicense = this.repositoryLicense.create(LicenseInput);
+    newLicense.createdAt = new Date(Date.now());
+    newLicense.modifiedAt = new Date(Date.now());
     return await this.repositoryLicense.save(newLicense);
   }
 
@@ -163,7 +165,10 @@ export class LicenseService {
    * 
    */
   async updateLicense(_id: number, updateLicenseData: LicenseDataUpdate): Promise<License> {
-    await this.repositoryLicense.update(_id, updateLicenseData);
+    let updateData = updateLicenseData;
+    updateData.createdAt = new Date(Date.now());
+    updateData.modifiedAt = new Date(Date.now());
+    await this.repositoryLicense.update(_id, updateData);
     return this.repositoryLicense.findOne({ where: { _id } });
   } 
 
@@ -177,6 +182,7 @@ export class LicenseService {
   async deleteLicense(_id: number): Promise<boolean> {
     const result = await this.repositoryLicense.update(_id, {
       active_status: false,
+      modifiedAt: new Date(Date.now())
     });
 
     return result.affected > 0;

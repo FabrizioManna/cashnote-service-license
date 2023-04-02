@@ -7,7 +7,7 @@ import { LicenseModule } from './license/license.module';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 import { ApolloDriver } from '@nestjs/apollo';
 import { ApolloDriverConfig } from '@nestjs/apollo/dist/interfaces';
-import { License } from './license/license.entity';
+import { License } from './license/entity/license.entity';
 
 @Module({
   imports: [

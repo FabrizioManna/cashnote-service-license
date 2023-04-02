@@ -4,7 +4,7 @@ import * as request from 'supertest';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 import { LicenseModule } from './license.module';
-import { License } from './license.entity';
+import { License } from './entity/license.entity';
 import { ApolloDriver } from '@nestjs/apollo';
 import { ApolloDriverConfig } from '@nestjs/apollo';
 import { v4 as uuidv4 } from 'uuid';
